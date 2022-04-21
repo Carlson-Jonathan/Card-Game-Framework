@@ -1,9 +1,7 @@
 DESCRIPTION:
-    This is a C++ game starter framework project made with SFML. Classes have been prepared to 
-    better handle and manage textures, sounds, and hardware controls so you don't have to 
-    re-invent the wheel every time you want to start making a new C++ game. Run the CMake 
-    instructions below to compile. This will draw a window with a sample background image and play
-    a demo song. Just edit the relevant code and call your game objects from main.cpp.
+    The classic card game 'War' made with the SFML framework. Based on my Game-Framework repository.
+    This game was made primarily to get a feel for making C++ card games in SFML so I could move on
+    to making more advanced card games.
 
 
 DEPENDENCIES:

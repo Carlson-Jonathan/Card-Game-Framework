@@ -30,6 +30,8 @@ vector<string> Miscellaneous::getAllFileNamesFromDirectory(const char *path) {
     if (directory != NULL) {
         while((entry = readdir(directory)) != NULL) {
             string file = entry->d_name;
+
+            if(file != "." && file != "..")
                 files.push_back(file);
         }
     }

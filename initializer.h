@@ -22,11 +22,11 @@ public:
 		window.setFramerateLimit(frameRate);
 
 		// Set background texture
-		background.setTexture(textures.textures["sample2"]);  
+		// background.setTexture(textures.textures["sample2"]);  
 		background.setOrigin(0, 0);	
 
 		// Play song
-		gameSound.loadAndPlayMusic("Sounds/Music/ExampleSong.ogg");
+		gameSound.loadAndPlayMusic("Sounds/Music/TownTheme.ogg");
 	}
 
 	unsigned int screenWidth  = 1333;

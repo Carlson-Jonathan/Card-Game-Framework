@@ -32,15 +32,23 @@ public:
 
 	map<string, sf::Texture> textures;
 
+	string getTextureName(string fileName) {
+		size_t found = fileName.find('.');
+		string textureName;
+
+    	if(found != string::npos)
+			textureName = fileName.substr(0, found);
+
+		return textureName;
+	}
+
 private:
 	
 	// All paths to directories containing images you wish to load go here (relative to this file).
 	vector<string> textureDirectories = {
 		"Images/Backgrounds",
-		"Images/Objects"
+		"Images/Objects/PlayingCards/100x150"
 	};
-
-
 
 	//----------------------------------------------------------------------------------------------
 
@@ -67,15 +75,6 @@ private:
 
 	//----------------------------------------------------------------------------------------------
 
-	string getTextureName(string fileName) {
-		size_t found = fileName.find('.');
-		string textureName;
-
-    	if(found != string::npos)
-			textureName = fileName.substr(0, found);
-
-		return textureName;
-	}
 
 	//----------------------------------------------------------------------------------------------
 
@@ -116,8 +115,9 @@ private:
 
 			if(!texture.loadFromFile(textureFilePaths[i].second)) 
 				cout << "ERROR: Unable to load image '" << textureFilePaths[i].second << "'" << endl;
-			else 
+			else {
 				textures.insert({textureFilePaths[i].first, texture});
+			}
 		}
 	}
 

@@ -15,6 +15,8 @@ public:
 
 	GameSound() {
 		SFMLmusic.setLoop(true);
+		SFMLmusic.setVolume(35.f);
+
 	}
 
 	void loadAndPlayMusic(string song) {
