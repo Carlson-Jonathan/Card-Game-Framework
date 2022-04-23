@@ -17,25 +17,54 @@ public:
 
         cardSprite.setTextureRect(sf::IntRect(0, 0, 100, 145));
  	    cardSprite.setTexture(globalData.textures.textures[cardName]);
-        cout << "card name: " << cardName << endl;
 		cardSprite.setOrigin(-100, -100);	
+
+        setCardValue(cardName);
+        setCardSuite(cardName);
+        printCardInfo(cardName);
     }
 
-    short value;
-    char suite;
-    Initializer* globalData;
+    //----------------------------------------------------------------------------------------------
 
-	sf::IntRect cardRectangle; 
+    short value = 0;
+    string suite = "unset";
  	sf::Sprite cardSprite; 
 
-    void setCardValue(string cardName) {
+    //----------------------------------------------------------------------------------------------
 
+    void printCardInfo(string cardName) {
+        cout << "[]" << endl;
+        cout << cardName << endl;
+        cout << "   Value: " << this->value << endl;
+        cout << "   Suite: " << this->suite << endl;
     }
+
+    //----------------------------------------------------------------------------------------------
+
+private:
+    Initializer* globalData;
+    map<char, short> faceCardValues = {{'j', 11}, {'q', 12}, {'k', 13}, {'a', 14}};
+
+    //----------------------------------------------------------------------------------------------
+
+    void setCardValue(string cardName) {
+        if(isdigit(cardName[0])) {
+            if(cardName[0] == 49)
+                this->value = 10;
+            else
+                this->value = cardName[0] - 48;
+        }
+        else
+            this->value = faceCardValues[cardName[0]];
+    }
+
+    //----------------------------------------------------------------------------------------------
 
     void setCardSuite(string cardName) {
-        
+        size_t found = cardName.find("f_");
+        if (found != string::npos)
+            this->suite = cardName.substr(found + 2);
     }
-
 };
 
 #endif // CARD_H

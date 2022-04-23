@@ -19,6 +19,8 @@ public:
 
 	}
 
+    //----------------------------------------------------------------------------------------------
+
 	void loadAndPlayMusic(string song) {
 		if(!SFMLmusic.openFromFile(song)) {
 			cout << "ERROR: Unable to load file '" << song << "'" << endl;
@@ -26,6 +28,8 @@ public:
 		}
 		SFMLmusic.play();
 	}
+
+    //----------------------------------------------------------------------------------------------
 
 	void loadAndPlayRandomSongFromDirectory() {}
 

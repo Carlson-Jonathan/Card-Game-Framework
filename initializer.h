@@ -29,6 +29,8 @@ public:
 		gameSound.loadAndPlayMusic("Sounds/Music/TownTheme.ogg");
 	}
 
+    //----------------------------------------------------------------------------------------------
+
 	unsigned int screenWidth  = 1333;
 	unsigned int screenHeight = 750;
 	short frameRate           = 60;
