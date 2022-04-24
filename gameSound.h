@@ -16,15 +16,14 @@ public:
 	GameSound() {
 		SFMLmusic.setLoop(true);
 		SFMLmusic.setVolume(35.f);
-
 	}
 
     //----------------------------------------------------------------------------------------------
 
 	void loadAndPlayMusic(string song) {
 		if(!SFMLmusic.openFromFile(song)) {
-			cout << "ERROR: Unable to load file '" << song << "'" << endl;
-			return;
+			cout << "ERROR: GameSound::loadAndPlayMusic(): Unable to load file '" << song << "'" << endl;
+			exit(139);
 		}
 		SFMLmusic.play();
 	}

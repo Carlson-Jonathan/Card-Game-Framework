@@ -44,6 +44,8 @@ public:
 		return textureName;
 	}
 
+    //----------------------------------------------------------------------------------------------
+
 private:
 	
 	// All paths to directories containing images you wish to load go here (relative to this file).
@@ -52,13 +54,13 @@ private:
 		"Images/Objects/PlayingCards/100x150"
 	};
 
-	//----------------------------------------------------------------------------------------------
-
 	sf::Texture texture;
 	vector< pair<string, string> > textureFilePaths;
 	
 	//----------------------------------------------------------------------------------------------
 
+	// File names will not include the directory path or the file's extension.
+	// Example: 'dir/somefile.jpg' will be 'somefile'
 	vector<string> getAllFileNamesFromDirectory(const char *path) {
     	struct dirent *entry;
     	vector<string> files;
@@ -109,17 +111,20 @@ private:
 
 	//----------------------------------------------------------------------------------------------
 
+	// Loads a map<string, sf::texture> with the texture name and sprite texture.
 	void populateTextures() {
 		for(int i = 0; i < textureFilePaths.size(); i++) {
 
-			if(!texture.loadFromFile(textureFilePaths[i].second)) 
-				cout << "ERROR: Unable to load image '" << textureFilePaths[i].second << "'" << endl;
+			if(!texture.loadFromFile(textureFilePaths[i].second)) {
+				cout << "ERROR: TextureManager::populateTextures(): Unable to load image '" 
+					 << textureFilePaths[i].second << "'" << endl;
+				exit(139);
+			}
 			else {
 				textures.insert({textureFilePaths[i].first, texture});
 			}
 		}
 	}
-
 };
 
 #endif // TEXUTUREMANAGER_H

@@ -12,6 +12,29 @@ using namespace std;
 class CardDeck_Test {
 public:
 
+    static bool shuffleDeck_test() {
+
+        vector<string> cardNames = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        CardDeck cardDeck;
+
+        cardDeck.shuffleDeck(cardNames);
+
+        if(cardDeck.cardNames == cardNames) {
+            cout << "==============================================================================="
+                 << endl;             
+            cout << "Unit test failed: CardDeck::shuffle_test: Vector was not randomized!" << endl;
+            for(auto i : cardDeck.cardNames) {
+                cout << i << ", ";
+            }
+            cout << endl;
+            return false;
+        }
+
+        return true;
+    }
+    
+    //----------------------------------------------------------------------------------------------
+
     static bool divideDeck_test() {
 
         CardDeck cardDeck;

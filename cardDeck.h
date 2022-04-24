@@ -51,16 +51,13 @@ public:
     //----------------------------------------------------------------------------------------------
 
     void shuffleDeck(vector<string> cardNames) {
-        for(short i = 0; i < 5; i++) {
-            short deckSize = cardNames.size();
-            while(deckSize) {
-                short index = Miscellaneous::generateRandomNumber(deckSize--) - 1;
-                cardNames.push_back(cardNames[index]);
-                cardNames.erase(cardNames.begin() + index);
-
-            }
-            this->cardNames = cardNames;
+        short deckSize = cardNames.size();
+        while(deckSize) {
+            short index = Miscellaneous::generateRandomNumber(deckSize--) - 1;
+            cardNames.push_back(cardNames[index]);
+            cardNames.erase(cardNames.begin() + index);
         }
+        this->cardNames = cardNames;
     }
 
     //----------------------------------------------------------------------------------------------
