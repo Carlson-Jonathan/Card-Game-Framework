@@ -13,14 +13,7 @@ using namespace std;
 #include <vector>
 
 /***************************************************************************************************
-* How to use (1 step):
-* 1.) List all directory paths containing images you wish to load in the 'textureDirectories' variable.
-*
-* getAllFileNamesFromDirectory() fills 'textureFilePaths' with file names and paths (strings).
-* populateTextures() fills public 'textures' with sf::texture files and keys to access them.
-*
-* When you need your texture, access this object using textures. Eg. 'texture = this.textures[imageName]'
-* The image name will be the file name without the extention. Make the file names unique!
+* List all directory paths containing images you wish to load in the 'textureDirectories' variable.
 ***************************************************************************************************/
 class TextureManager {
 public:
