@@ -4,30 +4,46 @@
 #include <iostream>
 using namespace std;
 
-#include <memory>
-#include <queue>
 #include "card.h"
 #include "miscellaneous.h"
 
+class CardDeck_Test;
+
 class CardDeck {
 public:
+    friend CardDeck_Test;
 
+    CardDeck() {}
     CardDeck(Initializer & globalData) {
         this->globalData = &globalData;
         this->cardNames = Miscellaneous::getAllFileNamesFromDirectory("Images/Objects/PlayingCards/100x150");
         shuffleDeck(this->cardNames);
         generateCardDeck();
+        divideDeck(5);
     }
 
-    // I am probably going to regret making this a queue instead of a vector.
-	queue<shared_ptr<Card>> deck;
+	vector<Card> deck;
 
     //----------------------------------------------------------------------------------------------
 
-    // Need functions to divide deck by 2, 3 and 4.
-    pair<queue<shared_ptr<Card>> , queue<shared_ptr<Card>>> splitDeck() {
-        pair<queue<shared_ptr<Card>>, queue<shared_ptr<Card>>> decks;
+    vector<vector<Card>> divideDeck(short numberOfDecks) {
 
+        vector<vector<Card>> decks;
+        short deckSizes = this->deck.size() / numberOfDecks;
+        short next = 0;
+
+        // Deal into even decks.
+        for(short i = 0; i < numberOfDecks; i++) { 
+            decks.push_back(
+                vector<Card>(this->deck.begin() + next, this->deck.begin() + deckSizes + next)
+            );
+            next += deckSizes;
+        }            
+
+        // Deal out left-over cards.
+        for(int i = 0; i < deck.size() % deckSizes; i++) {
+            decks[i].push_back(deck[i + (deckSizes * numberOfDecks)]);
+        }
 
         return decks;
     }
@@ -35,18 +51,25 @@ public:
     //----------------------------------------------------------------------------------------------
 
     void shuffleDeck(vector<string> cardNames) {
-        short deckSize = cardNames.size();
-        while(deckSize) {
-            short index = Miscellaneous::generateRandomNumber(deckSize--) - 1;
-            cout << "Random index: " << index << endl;
-            cardNames.push_back(cardNames[index]);
-            cardNames.erase(cardNames.begin() + index);
+        for(short i = 0; i < 5; i++) {
+            short deckSize = cardNames.size();
+            while(deckSize) {
+                short index = Miscellaneous::generateRandomNumber(deckSize--) - 1;
+                cardNames.push_back(cardNames[index]);
+                cardNames.erase(cardNames.begin() + index);
 
+            }
+            this->cardNames = cardNames;
         }
-        this->cardNames = cardNames;
     }
 
     //----------------------------------------------------------------------------------------------
+
+    void printDeck(vector<Card> deck) {
+        for(auto i : deck) {
+            cout << i.value << " of " << i.suite << endl;
+        }
+    }
 
 private:
     vector<string> cardNames;
@@ -60,7 +83,7 @@ private:
         }
 
         for(string i : this->cardNames) {
-            deck.push(shared_ptr<Card>(new Card(*globalData, i)));
+            deck.push_back(Card(*globalData, i));
         }
     }
 

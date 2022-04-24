@@ -2,10 +2,12 @@
 #define TESTHARNESS_CPP
 
 #include <iostream>
-#include <map>
 using namespace std;
 
+#include <map>
+
 #include "miscellaneous_test.h"
+#include "cardDeck_test.h"
 
 void printResults(const map<string, bool> & allResults) {
     cout << "############################# Unit Test Summary: #############################" << endl;
@@ -29,7 +31,12 @@ int main() {
     allResults.insert(pair<string, bool>(
         "Miscellaneous_Test::convertStringToFloat_test()",
         Miscellaneous_Test::convertStringToFloat_test()
-    ));      
+    ));   
+
+    allResults.insert(pair<string, bool>(
+        "CardDeck::divideDeck_test()",
+        CardDeck_Test::divideDeck_test()
+    ));         
 
     printResults(allResults);
 

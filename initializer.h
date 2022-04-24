@@ -9,6 +9,7 @@ using namespace std;
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
+#include <SFML/Audio.hpp>
 #include "eventHandler.h"
 #include "gameSound.h"
 #include "textureManager.h"
@@ -23,10 +24,10 @@ public:
 
 		// Set background texture
 		// background.setTexture(textures.textures["sample2"]);  
-		background.setOrigin(0, 0);	
+		// background.setOrigin(0, 0);	
 
 		// Play song
-		gameSound.loadAndPlayMusic("Sounds/Music/TownTheme.ogg");
+		gameSound.loadAndPlayMusic(defaultMusic);
 	}
 
     //----------------------------------------------------------------------------------------------
@@ -34,9 +35,10 @@ public:
 	unsigned int screenWidth  = 1333;
 	unsigned int screenHeight = 750;
 	short frameRate           = 60;
+	string defaultMusic       = "Sounds/Music/TownTheme.ogg";
 
 	sf::RenderWindow window;
-	sf::Sprite background;
+	// sf::Sprite background;
 
 	EventHandler   eventHandler;
 	GameSound      gameSound;

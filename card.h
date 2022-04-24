@@ -4,7 +4,10 @@
 #include <iostream>
 using namespace std;
 
+#include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
 #include <SFML/Window.hpp>
+#include <SFML/Network.hpp>
 
 #include "initializer.h"
 
@@ -21,7 +24,7 @@ public:
 
         setCardValue(cardName);
         setCardSuite(cardName);
-        printCardInfo(cardName);
+        // printCardInfo(cardName);
     }
 
     //----------------------------------------------------------------------------------------------
