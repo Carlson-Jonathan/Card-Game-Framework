@@ -1,3 +1,5 @@
+// Copyright Jonathan Carlson 2022
+
 #ifndef CARDTABLE_H
 #define CARDTABLE_H
 
@@ -6,7 +8,6 @@ using namespace std;
 
 #include "initializer.h"
 #include "cardDeck.h"
-#include "card.h"
 
 class CardTable {
 public:
@@ -20,11 +21,7 @@ public:
 
     sf::Text text;
 
-    Initializer* globalData;
-    CardDeck cardDeck; 
-
-    string fontFile = "Fonts/Robusta-Regular.ttf";
-	sf::Font font; 
+    //----------------------------------------------------------------------------------------------
 
     void setDemoText() {
         if (!font.loadFromFile(fontFile)) {
@@ -33,13 +30,13 @@ public:
         }
 
         text.setFont(font); 
-        text.setString("SFML Card Game Framework by Jonathan Carlson");
-        text.setCharacterSize(48); 
+        text.setString("Card Game Framework by Jonathan Carlson   |   (C) 2022");
+        text.setCharacterSize(40); 
         text.setFillColor(sf::Color::Yellow);
 
         sf::FloatRect textRect = text.getLocalBounds();
         text.setOrigin(textRect.left + textRect.width / 2.0f,
-                    textRect.top  + textRect.height / 2.0f);
+                       textRect.top  + textRect.height / 2.0f);
         text.setPosition(sf::Vector2f(globalData->screenWidth / 1.65, 60));
     }
 
@@ -62,6 +59,12 @@ public:
 		}
     }
 
+private:
+
+    Initializer* globalData;
+    CardDeck     cardDeck; 
+    string       fontFile = "Fonts/Robusta-Regular.ttf";
+	sf::Font     font; 
 };
 
 #endif // CARDTABLE_H

@@ -1,3 +1,5 @@
+// Copyright Jonathan Carlson 2022
+
 #ifndef CARD_TEST_H
 #define CARD_TEST_H
 

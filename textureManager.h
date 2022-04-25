@@ -12,15 +12,12 @@ using namespace std;
 #include <map>
 #include <vector>
 
-/***************************************************************************************************
-* List all directory paths containing images you wish to load in the 'textureDirectories' variable.
-***************************************************************************************************/
 class TextureManager {
 public:
 
 	TextureManager() {
-		loadTextureFilePaths();
-		populateTextures();
+		loadTextureFilePathsFromDirectories();
+		populateTextureList();
 	}
 
 	map<string, sf::Texture> textures;
@@ -72,7 +69,7 @@ private:
 
 	//----------------------------------------------------------------------------------------------
 
-	void loadTextureFilePaths() {
+	void loadTextureFilePathsFromDirectories() {
 
 		vector<string> supportedImageTypes = {".bmp", ".dds", ".jpg", ".png", ".tga", ".psd"};
 
@@ -105,7 +102,7 @@ private:
 	//----------------------------------------------------------------------------------------------
 
 	// Loads a map<string, sf::texture> with the texture name and sprite texture.
-	void populateTextures() {
+	void populateTextureList() {
 		for(int i = 0; i < textureFilePaths.size(); i++) {
 
 			if(!texture.loadFromFile(textureFilePaths[i].second)) {

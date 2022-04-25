@@ -1,3 +1,5 @@
+// Copyright Jonathan Carlson 2022
+
 #ifndef GAME_H
 #define GAME_H
 
@@ -28,9 +30,9 @@ public:
 private:
 
     Initializer* globalData;
-    CardTable cardTable;
-    short numberOfPlayers;
-    
+    CardTable    cardTable;
+    short        numberOfPlayers;
+
 
     void gameContent() {
         globalData->window.draw(cardTable.text);

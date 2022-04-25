@@ -10,7 +10,6 @@ using namespace std;
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
-#include "initializer.h"
 
 /* 
 	It works, but it obviously needs a major refactor/cleanup
@@ -65,13 +64,11 @@ public:
 					break;
 				case sf::Event::MouseButtonPressed:
 					mouseButton();
-					// printJoyButtons();
 					break;
 				case sf::Event::MouseButtonReleased:
 					cout << "Released!" << endl;
 					break;		
 				case sf::Event::MouseWheelMoved:
-					// Scroll Up = 1, Scroll Down = -1
 					cout << "Mouse wheel Scroll:" << event.mouseWheel.delta << endl;
 					break;	
 				case sf::Event::MouseMoved:
@@ -99,6 +96,7 @@ private:
 	/*------------------------------------------------------------------------------------------------*/
 
 	void closeWindow() {
+		cout << "Thanks for playing!" << endl;
 		window->close();
 	}
 
@@ -193,6 +191,8 @@ private:
 			Joystick_0_Button_18 = sf::Joystick::isButtonPressed(0, 18);
 	}
 
+    //----------------------------------------------------------------------------------------------
+
 	void setAllButtonsToDefault() {
 		Joystick_0_Button_0  = false;
 		Joystick_0_Button_1  = false;
@@ -215,6 +215,8 @@ private:
 		Joystick_0_Button_18 = false;
 	}
 
+    //----------------------------------------------------------------------------------------------
+
 	void printJoyButtons() {
 		cout << "J0_B0 = "  << Joystick_0_Button_0  << endl;
 		cout << "J0_B1 = "  << Joystick_0_Button_1  << endl;
@@ -233,6 +235,5 @@ private:
 		cout << "J0_B14 = " << Joystick_0_Button_14 << endl;
 		cout << "J0_B15 = " << Joystick_0_Button_15 << endl;
 	}
-
 };
 #endif // EVENTHANDLER_H

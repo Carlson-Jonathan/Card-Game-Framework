@@ -7,8 +7,6 @@
 using namespace std;
 
 #include <SFML/Audio.hpp>
-#include <vector>
-#include "miscellaneous.h"
 
 class GameSound {
 public:

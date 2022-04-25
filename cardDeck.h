@@ -1,3 +1,5 @@
+// Copyright Jonathan Carlson 2022
+
 #ifndef CARDDECK_H
 #define CARDDECK_H
 
@@ -41,7 +43,7 @@ public:
         }            
 
         // Deal out left-over cards.
-        for(int i = 0; i < deck.size() % deckSizes; i++) {
+        for(short i = 0; i < deck.size() % deckSizes; i++) {
             decks[i].push_back(deck[i + (deckSizes * numberOfDecks)]);
         }
 
@@ -69,8 +71,9 @@ public:
     }
 
 private:
+
     vector<string> cardNames;
-    Initializer* globalData;
+    Initializer*   globalData;
 
     //----------------------------------------------------------------------------------------------
 

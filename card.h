@@ -1,3 +1,5 @@
+// Copyright Jonathan Carlson 2022
+
 #ifndef CARD_H
 #define CARD_H
 
@@ -5,9 +7,7 @@
 using namespace std;
 
 #include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
 #include <SFML/Window.hpp>
-#include <SFML/Network.hpp>
 
 #include "initializer.h"
 
@@ -29,8 +29,8 @@ public:
         setCardSuite(cardName);
     }
 
-    short value = 0;
-    string suite = "unset";
+    short      value = 0;
+    string     suite = "unset";
  	sf::Sprite cardSprite; 
 
     //----------------------------------------------------------------------------------------------
@@ -45,7 +45,8 @@ public:
     //----------------------------------------------------------------------------------------------
 
 private:
-    Initializer* globalData;
+
+    Initializer*     globalData;
     map<char, short> faceCardValues = {{'j', 11}, {'q', 12}, {'k', 13}, {'a', 14}};
 
     //----------------------------------------------------------------------------------------------
@@ -64,8 +65,7 @@ private:
                     exit(139);
                 }
             }
-        }
-        else {
+        } else {
             if (faceCardValues.find(cardName[0]) == faceCardValues.end()) {
                 cout << exception << endl;
                 exit(139);

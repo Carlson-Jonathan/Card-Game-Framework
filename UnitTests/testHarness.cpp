@@ -1,3 +1,5 @@
+// Copyright Jonathan Carlson 2022
+
 #ifndef TESTHARNESS_CPP
 #define TESTHARNESS_CPP
 

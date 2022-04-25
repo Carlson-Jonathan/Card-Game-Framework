@@ -12,7 +12,7 @@ using namespace std;
 
 int main() {
 
-	srand(time(NULL)); 
+	srand(time(NULL)); 		// For seeding the random number generator
 	Initializer globalData;
 
 	Game game(globalData);
