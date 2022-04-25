@@ -25,4 +25,4 @@ COMPILE INSTRUCTIONS (CMake):
 COMPILE INSTRUCTIONS (g++):
     If CMake isnt working, you can use the 'compileAndRun.bash' script. Run as is. 
     
-![](FrameworkUML.png)
+![](Images/FrameworkUML.png)
